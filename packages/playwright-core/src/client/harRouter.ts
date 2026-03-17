@@ -45,6 +45,18 @@ export class HarRouter {
   private async _handle(route: Route) {
     const request = route.request();
 
+    // // Modify URL matching logic to support pattern-based matching if enabled.
+    // const urlMatch = this._options.urlMatch;
+    // const requestUrl = request.url();
+    // if (urlMatch && typeof urlMatch === 'string' && !requestUrl.includes(urlMatch)) {
+    //   if (this._notFoundAction === 'abort') {
+    //     await route.abort();
+    //     return;
+    //   }
+    //   await route.fallback();
+    //   return;
+    // }
+
     const response = await this._localUtils.harLookup({
       harId: this._harId,
       url: request.url(),

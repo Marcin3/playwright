@@ -55,6 +55,7 @@ it('by default should abort requests not found in har', async ({ context, server
   const page = await context.newPage();
   const error = await page.goto(server.EMPTY_PAGE).catch(e => e);
   expect(error instanceof Error).toBe(true);
+  expect(error.message).toContain('page.goto');
 });
 
 it('fallback:continue should continue requests on bad har', async ({ context, server }, testInfo) => {
